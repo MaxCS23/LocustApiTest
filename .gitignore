@@ -1,1 +1,49 @@
-/venv
+# Entorno virtual
+venv/
+ENV/
+env/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# VS Code settings y carpetas
+.vscode/
+.history/
+
+# Logs y bases de datos
+*.log
+*.sqlite3
+
+# Archivos temporales
+*.swp
+*.tmp
+*.temp
+
+# Pipenv
+Pipfile.lock
+
+# MacOS
+.DS_Store
+
+# Python test cache
+.pytest_cache/
+.cache/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# coverage reports
+htmlcov/
+.coverage
+
+# Locust files - si tienes reportes u otros archivos
+reports/
+locust.log
