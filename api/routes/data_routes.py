@@ -31,8 +31,14 @@ def add_items():
     """POST request to add items"""
     data = read_data()
     new_item = request.json
+    if not new_item:
+        return {"error": "Invalid or missing JSON data"}, 400
+
+    max_id = max([item["id"] for item in data], default=0)
+    new_item["id"] = max_id + 1
+
     data.append(new_item)
-    write_data(data=data)
+    write_data(data)
     return jsonify(new_item), 201
 
 
@@ -40,10 +46,14 @@ def add_items():
 def update_item(item_id):
     """PUT request to update item"""
     data = read_data()
-    if 0 <= item_id < len(data):
-        data[item_id] = request.json
-        write_data(data)
-        return jsonify(data[item_id])
+    updates = request.json
+
+    for item in data:
+        if item["id"] == item_id:
+            item.update(updates)
+            write_data(data)
+            return jsonify(item), 200
+
     return {"error": "Item not found"}, 404
 
 
@@ -51,8 +61,10 @@ def update_item(item_id):
 def delete_item(item_id):
     """DELETE request to remove item"""
     data = read_data()
-    if 0 <= item_id < len(data):
-        remove = data.pop(item_id)
-        write_data(data)
-        return jsonify(remove)
+
+    for i, item in enumerate(data):
+        if item["id"] == item_id:
+            deleted_item = data.pop(i)
+            write_data(data)
+            return jsonify(deleted_item), 200
     return {"error": "Item not found"}, 404

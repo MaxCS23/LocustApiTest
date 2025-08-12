@@ -1,7 +1,4 @@
-from locust import TaskSet, task
 
 
-class SlowTasks(TaskSet):
-    @task
-    def slow(self):
-        self.client.get("/slow", name="Accessing Slow route")
+def slow(TaskSet):
+    TaskSet.client.get("/slow", name="Accessing Slow route")
