@@ -39,3 +39,4 @@ jobs:
           path: |
             report.html
             results*.csv
+            continue-on-error: true 
