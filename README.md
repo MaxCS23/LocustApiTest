@@ -77,7 +77,6 @@ Configure the number of users and spawn rate (e.g., 20 users, run for 2 minutes)
 ## 🔧 Next Steps / Improvements
 
 * Add interactive dashboard visualizations using Dash or Streamlit.
-* Integrate with CI/CD pipelines for automated performance testing.
 
 ---
 
